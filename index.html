@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>倒计时</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<h1><div id="subtitle">距暑假结束还有</div>
+    <div id="hundred-data" class="data">0</div>
+    <div id="ten-data" class="data">0</div>
+    <div id="one-data" class="data">0</div>
+</h1>
+
+    
+</body>
+<footer>
+    <script src="js/timer.js"></script>
+    <script>
+        const target_time = '2022-8-31' //终点时间
+        const now_date = new Date()
+        month = now_date.getMonth()+1
+        let now_time = now_date.getFullYear()+'-'+month+'-'+now_date.getDate()
+
+        let distance = getDistanceDays(now_time , target_time)+''  //转成字符串好操作
+        
+        dis_array = distance.split('')//转成字符数组
+        if (distance.length == 3){
+            //若有百位
+            document.getElementById('hundred-data').textContent = dis_array[0]
+            document.getElementById('ten-data').textContent = dis_array[1]
+            document.getElementById('one-data').textContent = dis_array[2]
+        }else if(distance.length == 2){
+            //若只有十位
+            document.getElementById('ten-data').textContent = dis_array[0]
+            document.getElementById('one-data').textContent = dis_array[1]
+        }else if(distance.length){
+            document.getElementById('one-data').textContent = dis_array[0]
+        }else{
+            document.getElementById('hundred-data').textContent = 'e'
+            document.getElementById('ten-data').textContent = 'r'
+            document.getElementById('one-data').textContent = 'r'
+        }
+
+
+        
+
+    </script>
+</footer>
+</html>
